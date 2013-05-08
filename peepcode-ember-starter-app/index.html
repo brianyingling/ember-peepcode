@@ -35,16 +35,38 @@
         <div class='four columns' id='tables'>
           {{partial "tableMenu"}}
         </div>
+        <div class='eight columns' id='order'>
+          {{ outlet }}
+        </div>
       </div>
     </script>
 
     <script type='text/x-handlebars' data-template-name='_tableMenu'>
       <h2>Tables</h2>
       {{#each table in controller}}
-        {{table.id}}
+        {{#linkTo 'table' table class='panel six columns'}} {{table.id}} {{/linkTo}}
       {{/each}}
     </script>
 
+   <script type='text/x-handlebars' data-template-name='table'>
+    <div class='row'>
+      <div class='three columns'>
+      {{render "food"}}
+      </div>
+      <div class='nine columns'>
+        <h2>Table <span>{{id}}</span></h2>
+      </div>
+    </div>
+    </script>
+
+   <script type='text/x-handlebars' data-template-name='food'>
+   <ul id='menu'>
+    {{#each food in controller}}
+      <li>
+        <p>{{food.name}}</p>
+    {{/each}}
+   </ul>
+   </script>
 
 
     <script src="js/libs/jquery-1.8.3.min.js"></script>
