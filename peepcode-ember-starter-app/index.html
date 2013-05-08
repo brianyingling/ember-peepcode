@@ -63,7 +63,9 @@
    <ul id='menu'>
     {{#each food in controller}}
       <li>
+        <img {{ bindAttr src="food.imageUrl"}}>
         <p>{{food.name}}</p>
+      </li>
     {{/each}}
    </ul>
    </script>
