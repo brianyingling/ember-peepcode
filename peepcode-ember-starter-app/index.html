@@ -48,27 +48,44 @@
       {{/each}}
     </script>
 
-   <script type='text/x-handlebars' data-template-name='table'>
-    <div class='row'>
-      <div class='three columns'>
-      {{render "food"}}
+
+  <script type='text/x-handlebars' data-template-name='table'>
+      <div class='row'>
+        <div class='three columns'>
+        {{render "food"}}
+        </div>
+        <div class='nine columns'>
+          <h2>Table <span>{{id}}</span></h2>
+          {{render "tab" tab }}
+        </div>
       </div>
-      <div class='nine columns'>
-        <h2>Table <span>{{id}}</span></h2>
-      </div>
-    </div>
-    </script>
+  </script>
+
+  <script type='text/x-handlebars' data-template-name='tab'>
+    <ul id='customer-tab'>
+      {{#each tabItem in tabItems}}
+        <li><h3>{{tabItem.food.name}} <span>${{tabItem.cents}}</span></h3></li>
+      {{else}}
+        <li><h3>Click a food to add it.</h3></li>
+      {{/each}}
+    </ul>
+  </script>
+
 
    <script type='text/x-handlebars' data-template-name='food'>
-   <ul id='menu'>
-    {{#each food in controller}}
-      <li>
-        <img {{ bindAttr src="food.imageUrl"}}>
-        <p>{{food.name}}</p>
-      </li>
-    {{/each}}
-   </ul>
+     <ul id='menu'>
+      {{#each food in controller}}
+        <li>
+          <img {{ bindAttr src="food.imageUrl"}}>
+          <p>{{food.name}}</p>
+        </li>
+      {{/each}}
+     </ul>
    </script>
+
+  <script type='text/x-handlebars' data-template-name='tables/index'>
+    <h2>Please select a table</h2>
+  </script>
 
 
     <script src="js/libs/jquery-1.8.3.min.js"></script>
